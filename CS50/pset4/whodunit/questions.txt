@@ -1,0 +1,24 @@
+0.  BMP : ~ (fluent), GIF : 256, JPEG : 16*10^3, PNG : 16*10^3 + transparency
+1.  GIF
+2.  With lossless compression, every single bit of data that was originally in the file remains after the file is uncompressed. Lossy compression reduces a file by permanently eliminating certain information, especially redundant information.
+3.  GIF, BMP, PNG
+4.  We just loose a link to data, not data itself.
+5.  Format "empty" disk space or fill it with random variables.
+6.  A header file that standardizes integers (exact-width) across different systems.
+7.  It’s easier to have aliases to use interchangeably for explicit fixed width integers. Specifies the number of bytes because one system an int might be a long in another.
+8.  1 4 4 2
+9.  0x42 0x4d
+10. bfSize is the size of the bitmap file in bytes. biSize is the number of bytes required by the structure. (BITMAPINFOHEADER)
+11. If biHeight is negative, indicating a top-down DIB, biCompression must be either BI_RGB or BI_BITFIELDS. Top-down DIBs cannot be compressed.
+12. biBitCount
+13. Because a limit of disk space can be reached or program have no permissions to create a file.
+14. Because you didn't use array. ¯\_(ツ)_/¯
+15. 3
+16. Sets the file position indicator for the file stream to the value pointed to by offset.
+17. How you set the offset to be relative to the current position indicator instead of the start or end.
+18. Never gonna give you up
+Never gonna let you down
+Never gonna run around and desert you
+Never gonna make you cry
+Never gonna say goodbye
+Never gonna tell a lie and hurt you
