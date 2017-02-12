@@ -35,6 +35,5 @@ int get_int() { // Вместо get_int из cs50.h
  
 int main(void) {
     printf("minutes: ");
-    int minutes = get_int();
-    printf("bottles: %i\n", (minutes * 12));
+    printf("bottles: %i\n", (get_int() * 12));
 }
