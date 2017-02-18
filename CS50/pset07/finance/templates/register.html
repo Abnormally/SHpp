@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('register') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="off" autofocus="" class="form-control" name="email" placeholder="E-mail" type="text" required />
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" autofocus="" class="form-control" name="username" placeholder="Name" type="text" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="password" name="password" placeholder="Password" type="password" required />
+            </div>
+            <div class="form-group">
+                <script language='javascript' type='text/javascript'>
+                    function check(input) {
+                        if (input.value != document.getElementById('password').value) {
+                            input.setCustomValidity('Password Must be Matching.');
+                        } else {
+                            input.setCustomValidity('');
+                        }
+                    }
+                </script>
+                <input class="form-control" name="confirmation" placeholder="Password (again)" type="password" oninput="check(this)" required />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Register</button>
+                <button class="btn btn-default" type="reset">Reset</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

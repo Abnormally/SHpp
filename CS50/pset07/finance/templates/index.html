@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block main %}
+    <table class="table table-inverse">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Bid price</th>
+                <th>Current price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="5"></td>
+                <td>{{ usermoney }}</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {{ shares | safe }}
+            <tr>
+                <td colspan="5">CASH</td>
+                <td>{{ cash }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
