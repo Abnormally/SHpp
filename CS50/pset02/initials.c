@@ -13,7 +13,7 @@ int read(char word[]) {
     return i;
 }
 
-void init(char string[], int len) {
+void print_initials(char string[], int len) {
     if (isalpha(string[0]))
         printf("%c", toupper(string[0]));
 
@@ -35,5 +35,5 @@ int main(void) {
         len = read(string);
     } while (len < 1);
 
-    init(string, len);
+    print_initials(string, len);
 }
