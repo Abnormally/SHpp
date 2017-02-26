@@ -29,13 +29,13 @@ int read(char line[]) { // Да, я в курсе про scanf("%s", string), г
 }
 
 void parse_int(int * x, char * string) { // Да, я в курсе про atoi
-    int i, m;
+    int i, sign;
     
     if (string[0] == '-') {
-        m = -1;
+        sign = -1;
         i = 1;
     } else {
-        m = 1;
+        sign = 1;
         i = 0;
     }
     
@@ -44,7 +44,7 @@ void parse_int(int * x, char * string) { // Да, я в курсе про atoi
         *x = (*x) * 10 + (string[i] - 0x30);
     }
     
-    *x = (*x) * m;
+    *x = (*x) * sign;
 }
 
 bool in_big_range(int ch) {
