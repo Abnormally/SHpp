@@ -1,6 +1,6 @@
 #include <stdio.h>
-#import <stdbool.h>
-#include "cs50.h"
+#include <stdbool.h>
+#include <stdlib.h>
 
 int **board;
 int size;
@@ -66,41 +66,50 @@ void draw(void) {
 
 bool move(int tile) {
     if (tile < 1 || tile > size * size - 1) return false;
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            if (board[i][j] == tile) {
-                if ((zero_x - 1 == i && zero_y == j) || (zero_x == i && zero_y + 1 == j) || (zero_x + 1 == i && zero_y == j) || (zero_x == i && zero_y - 1 == j)) {
-                    swap(&board[i][j], &board[zero_x][zero_y]);
-                    zero_x = i;
-                    zero_y = j;
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+    
+    if (zero_x - 1 > -1) {
+        if (board[zero_x - 1][zero_y] == tile) {
+            swap(&board[zero_x][zero_y], &board[zero_x - 1][zero_y]);
+            zero_x -= 1;
+            return true;
         }
     }
+    
+    if (zero_x + 1 < size) {
+        if (board[zero_x + 1][zero_y] == tile) {
+            swap(&board[zero_x][zero_y], &board[zero_x + 1][zero_y]);
+            zero_x += 1;
+            return true;
+        }
+    }
+    
+    if (zero_y - 1 > -1) {
+        if (board[zero_x][zero_y - 1] == tile) {
+            swap(&board[zero_x][zero_y], &board[zero_x][zero_y - 1]);
+            zero_y -= 1;
+            return true;
+        }
+    }
+    
+    if (zero_y + 1 < size) {
+        if (board[zero_x][zero_y + 1] == tile) {
+            swap(&board[zero_x][zero_y], &board[zero_x][zero_y + 1]);
+            zero_y += 1;
+            return true;
+        }
+    }
+    
     return false;
 }
 
 bool won(void) {
-    bool ok = true;
-    int counter = 1;
-    
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
-            if (i != size - 1 || j != size - 1) {
-                if (board[i][j] != counter) {
-                    ok = false;
-                    break;
-                }
-            
-                counter++;
-            }
+            if (board[i][j] != (i * size) + j + 1 && board[i][j] != 0) return false;
         }
     }
     
-    return ok;
+    return true;
 }
 
 void all_free(void) {
@@ -109,7 +118,7 @@ void all_free(void) {
     free(board);
 }
 
-int main(int argc, string argv[]) {
+int main(int argc, char * argv[]) {
     if (argc != 2) {
         printf("Usage: fifteen d\n");
         exit(1);
@@ -140,7 +149,7 @@ int main(int argc, string argv[]) {
         }
         
         printf("Tile to move: ");
-        int tile = GetInt();
+        int tile; scanf("%i", &tile);
         
         if (tile == 0) break;
         
