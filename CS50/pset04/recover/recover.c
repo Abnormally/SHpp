@@ -3,10 +3,9 @@
  
 #define BUFFER_SIZE 512
  
-int main(int argc, char * args[])
-{
+int main(int argc, char * args[]) {
     if (argc != 2) {
-        printf("Usage: ./recover image\n");
+        fprintf(stderr, "Usage: ./recover image\n");
         return 1;
     }
     
